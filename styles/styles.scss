@@ -1,0 +1,706 @@
+// variables
+$mobile: 321px;
+$tablet: 769px;
+$desktop: 1440px;
+$nav-height: 44px;
+$plexmono: 'IBM Plex Mono', monospace;
+$plexsans: 'IBM Plex Sans', monospace;
+
+* {
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    font-family: $plexmono;
+    font-weight: 300;
+    color: #060A24 ;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+// logo
+
+.logo {
+    position: absolute;
+    top: 10px;
+    left: 16px;
+
+    @media (min-width: $mobile) {
+            top: 22px;
+            left: 100px;
+        img{
+            width: 36px;
+        }
+    }
+
+    @media (min-width: $mobile) and (max-width: $tablet) {
+      top: 5px;
+      left: 30px;
+        img{
+            width: 36px;
+        }
+    }
+}
+
+// nav
+
+.nav {
+  &__bar {
+    padding-top: $nav-height;
+    position: relative;
+
+    @media (min-width: $tablet) {
+      padding-top: 0;
+    }
+  }
+
+  &__items {
+    max-height: 0px;
+    line-height: 28px;
+    overflow: hidden;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    transition: all 1s cubic-bezier(.325, 1, .22, 1);
+
+    @media (min-width: $tablet) {
+      max-height: none;
+      text-align: right;
+      padding: 26px 100px;
+    }
+  }
+
+  &__item {
+    padding: 0;
+    margin: 0;
+    background: #fff;
+
+    @media (min-width: $tablet) {
+      display: inline-block;
+    }
+
+    a {
+        letter-spacing: 0px;
+        display: block;
+        padding: 14px;
+        margin: 0;
+        color: #FFFFFF;
+        background: #0000EC;
+        font-size: 16px;
+        text-decoration: none;
+        transition: opacity 0.5s ease;
+
+        &:link,
+        &:visited {
+          color: #fff;
+        }
+  
+        &:hover,
+        &:focus {
+          text-decoration: none;
+        }
+
+      @media (min-width: $tablet) {
+        color: #060A24;
+        display: inline-block;
+        height: $nav-height;
+        line-height: $nav-height;
+        padding-top: 0;
+        padding-bottom: 0;
+        border: none;
+        background: transparent;
+
+        a {
+            letter-spacing: 0px;
+            display: block;
+            padding: 14px;
+            margin: 0;
+            color: #060A24;
+            background: #0000EC;
+            font-size: 16px;
+            text-decoration: none;
+            transition: opacity 0.5s ease;
+            }
+
+            &:link,
+            &:visited {
+              color: #060A24;
+            }
+      
+            &:hover{
+              text-decoration: line-through;
+              opacity: 0.7;
+              color: #00F3BB;
+            }
+    
+            &:focus {
+              text-decoration: none;
+              opacity: 0.7;
+              color: #00F3BB;
+            }
+
+            &:active {
+              text-decoration: line-through;
+              color: #060A24;
+              opacity: 0.56;
+            }
+      }
+    }
+  }
+
+  // hamburger icon
+
+  &__icon {
+    display: block;
+    position: absolute;
+    top: 16px;
+    right: 19px;
+    height: 16px;
+    width: 18px;
+    cursor: pointer;
+    transition: all 1s cubic-bezier(.19, 1, .22, 1);
+
+    &:focus {
+        outline: none;
+    }
+
+    @media (min-width: $tablet) {
+      display: none;
+    }
+  }
+
+  &__icon-line {
+    position: absolute;
+    display: block;
+    background: #000000;
+    width: 18px;
+    height: 2px;
+    left: 0;
+    text-indent: 0;
+    transition: all .6s cubic-bezier(.5, .1, 0, 1.2);
+
+    &:first-child {
+      top: 0;
+    }
+
+    &:nth-child(2) {
+      top: 5px;
+    }
+
+    &:nth-child(3) {
+      top: 10px;
+    }
+  }
+}
+
+// Checkbox hack
+
+input[type=checkbox] {
+  display: none;
+  visibility: hidden;
+
+  &:checked {
+
+    ~ nav .nav__items {
+        height: auto;
+        max-height: 30rem;
+    }
+
+    ~ label .nav__icon-line:first-child {
+        background-color: #060A24;
+        top: -2px;
+        height: 2px;
+        width: 18px;
+        transform: translateX(-8px) rotate(-45deg) translateY(12px);
+    }
+
+    ~ label .nav__icon-line:nth-child(2) {
+        opacity: 0;
+    }
+
+    ~ label .nav__icon-line:nth-child(3) {
+        background-color: #060A24;
+        top: 12px;
+        height: 2px;
+        width: 18px;
+        transform: translateX(-5px) rotate(45deg) translateY(-8px);
+    }
+  }
+}
+
+// main title, text & button
+
+.title-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 90%;
+  margin: 0 auto;
+  height: 166px;
+  margin-top: 29px;
+
+  @media (min-width: $mobile) and (max-width: $desktop){
+    height: 132px;
+  }
+
+  @media (min-width: $desktop) {
+    height: 132px;
+    width: 72.3%;
+    margin-top: 100px;
+  }
+}
+
+
+
+.title{
+
+    h1{
+      font-family: $plexsans;
+      font-size: 36px;
+      line-height: 42px;
+      font-weight: 300;
+    }
+
+    span{
+      font-family: $plexsans;
+      font-weight: 300;
+      text-decoration: line-through;
+    }
+
+    h3{
+        @extend h1;
+    }
+
+    @media (min-width: $desktop){
+
+      h1{
+        line-height: unset;
+        font-size: 64px;
+        display: inline;
+      }
+      
+      h3{
+        line-height: unset;
+        font-size: 48px;
+        display: inline;
+      }
+
+
+    }
+
+}
+
+.paragraph{
+
+    p{
+        font-size: 14px; 
+        line-height: 22px;
+        letter-spacing: 0;
+        display: inline;
+
+        &.text-desktop{
+          display: none;
+        }
+        &.text-mobile{
+          display: inline;
+        }
+    }
+
+    @media (min-width: $desktop){
+        width: 610px;
+       
+        p{
+          font-size: 16px; 
+          line-height: 24px;
+          letter-spacing: 0;
+          display: inline;
+          
+
+          &.text-mobile{
+            display: none;
+          }
+
+          &.text-desktop{
+            display: inline;
+          }
+        }
+    }
+}
+
+.button-container{
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 36px;
+
+  @media (min-width: $desktop){
+    width: 72.3%;
+    margin-top: 56px;
+  }
+}
+
+.button-center{
+  @media (min-width: $mobile){
+    text-align: center;
+  }
+}
+
+.button{
+    padding-top:14px;
+    padding-bottom: 14px;
+    width: 288px;
+    margin-bottom: 24px;
+    background-color: #00F3BB;
+    font-weight: 500;
+    border: none;
+    font-size: 16px;
+    
+    &:hover{
+      background-image: linear-gradient(to right, #00F0B8,#0000FE);
+      color: #FFFFFF;
+    }
+
+    @media (min-width: $desktop){
+      font-size: 18px;
+      width: 226px;
+      padding-top:18px;
+      padding-bottom: 18px;
+    }
+}
+
+// background transform & podcast episodes
+
+.background-transform{
+  position: absolute;
+  width: 100%;
+  height: 1203.5px;
+  margin-top: 35px;
+  z-index: -1;
+  background-image: linear-gradient(#0000FF,#0000A3);
+  transform: skewY(-6deg);
+  transform-origin: top left;
+
+  @media (min-width: $tablet){
+    height: 900px;
+    background-image: linear-gradient(to left, #0000FF,#0000A3);
+  }
+
+}
+
+.title-episode{
+    padding-top: 64px;
+    margin-bottom: 21px;
+    margin: 0 auto;
+    width: 90%;
+
+    h2{
+      color: #FFFFFF;
+      font-size: 36px;
+      font-family: $plexsans;
+    }
+
+    @media (min-width: $desktop) {
+      width: 72.2%;
+      margin-bottom: 24px;
+      margin-top: 100px;
+
+      h2{
+        font-size: 48px;
+      }
+    }
+}
+
+.episode-container{
+  margin-top: 21px;
+
+  @media (min-width: $desktop) {
+    width: 90%;
+    margin: 0 auto;
+    height: 536px;
+  }
+
+}
+
+.episode-select{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 965px;
+
+    iframe{
+      width: 95%;
+      height: 232px;
+    }
+
+    @media (min-width: $tablet){
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      height: unset;
+
+      iframe{
+        width: 45%;
+        margin-bottom: 72px;
+      }
+    }
+}
+
+// phone image & text
+
+.container-where{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 90%;
+  margin: 0 auto;
+
+  @media (min-width: $desktop){
+    justify-content: space-between;
+    width: 70%;
+    
+  }
+}
+
+.img-phone{
+  margin-top: 48px;
+
+  img{
+    width: 320px;
+  }
+  
+  @media (min-width: $desktop){
+    img{
+      width: 457.6px;
+    }
+  }
+}
+
+.title-where{
+  @extend .title;
+  margin-top: 27px;
+  
+  @media (min-width:$desktop){
+    margin: 0;
+    margin-bottom: 24px;
+    p{
+      font-size: 48px;
+    }
+  }
+}
+
+.paragraph-where{
+  margin-top: 8px;
+
+  @extend .paragraph;
+
+  @media (min-width: $tablet) and (max-width: $desktop){
+    width: 370px;
+  }
+  
+  @media (min-width: $desktop) {
+    width: 464px;
+  }
+}
+
+// invite title & image grid
+
+
+.title-invite{
+  @extend .title;
+  margin: 0 auto;
+  margin-top: 54px;
+  width: 90%;
+
+  @media (min-width:$desktop){
+    margin-bottom: 24px;
+    margin-top: 64px;
+    width: 72.2%;
+    p{
+      font-size: 48px;
+    }
+  }
+}
+
+.img-gallery{
+  margin-top: 14px;
+
+  img{
+    max-width: 100%;
+    margin-bottom: -4px;
+  }
+
+  @media (min-width: 640px){
+    margin-top: 36px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+// about title & svg images
+
+.title-about{
+  @extend .title;
+  margin: 0 auto;
+  margin-top: 48px;
+  width: 90%;
+
+  @media (min-width: $tablet){
+    margin: 0 auto;
+    margin-bottom: 24px;
+    margin-top: 64px;
+  
+    p{
+      font-size: 48px;
+    }
+  }
+
+  @media (min-width: $desktop) {
+    width: 72.2%;
+  }
+
+
+}
+
+.about-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 800px;
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 24px;
+
+  @media (min-width: $tablet){
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    height: unset;
+    width: 72.2%;
+    margin: 0 auto;
+    margin-top: 56px;
+    align-items: flex-start;
+  }
+
+  @media (min-width: $desktop){
+    flex-direction: row;
+    height: 178px;
+    width: 72.2%;
+    margin: 0 auto;
+    margin-top: 56px;
+    align-items: flex-start;
+  }
+
+}
+
+.about-item{
+  text-align: center;
+  
+  p{
+    font-family: $plexsans;
+    font-size: 24px;
+    font-weight: 600;
+    color: #060A24;
+    letter-spacing: 0;
+    margin-top: 10px;
+  }
+
+  @media (min-width: $desktop){
+    width: 220px
+  }
+
+}
+
+// footer
+
+.background-transform-end{
+  position: relative;
+  height: 341px;
+  background-image: linear-gradient(#0000FF,#0000A3);
+  clip-path: polygon(100% 0%, 100% 100%, 100% 100%, -700% 100%);
+
+  @media (min-width: $tablet){
+    clip-path: polygon(100% 0%, 100% 100%, 100% 100%, -300% 100%);
+  }
+
+  @media (min-width: $desktop){
+    margin-top: 40px;
+    height: 518px;
+    background-image: linear-gradient(to left, #0000FF,#0000A3);
+    clip-path: polygon(100% 0%, 100% 100%, 100% 100%, -300% 100%);
+  }
+}
+
+.title-end{
+  @extend .title;
+    h3{
+      padding-top: 64px;
+      color: #FFFFFF;
+      text-align: center;
+      letter-spacing: 0;
+      width: 288px;
+      margin: 0 auto;
+    }
+
+    @media (min-width: $desktop){
+      padding-top: 213px;
+      text-align: center;
+    }
+}
+
+.button-listen{
+  @extend .button;
+
+  @media (min-width: $tablet) {
+    width: 345px;
+  }
+}
+
+// copyright & social networks
+
+.copyright-container{
+  @media (min-width: $desktop){
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 85%;
+    margin-left: 100px;
+  }
+}
+
+.copyright{
+  font-family: $plexmono;
+  font-size: 14px;
+  color: #060A24;
+  letter-spacing: 0;
+  line-height: 22px;
+  text-align: center;
+  margin-top: 24px;
+  margin-bottom: 16px;
+}
+
+.social-container{
+  margin: 0 auto;
+  width: 227px;
+  margin-bottom: 31px;
+
+  @media (min-width: $desktop){
+    margin: 0;
+  }
+}
+
+.social-items{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+
